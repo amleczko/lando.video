@@ -1,36 +1,70 @@
-from setuptools import setup, find_packages
+# -*- coding: utf-8 -*-
+"""
+This module contains the tool of lando.video
+"""
 import os
+from setuptools import setup, find_packages
+
+
+def read(*rnames):
+    return open(os.path.join(os.path.dirname(__file__), *rnames)).read()
 
 version = '1.0'
 
+long_description = (
+    read('README.md')
+    + '\n' +
+    'Change history\n'
+    '**************\n'
+    + '\n' +
+    read('CHANGES.txt')
+    + '\n' +
+    'Detailed Documentation\n'
+    '**********************\n'
+    + '\n' +
+    read('lando', 'video', 'README.txt')
+    + '\n' +
+    'Contributors\n'
+    '************\n'
+    + '\n' +
+    read('CONTRIBUTORS.txt')
+    + '\n' +
+    'Download\n'
+    '********\n')
+
+tests_require = ['zope.testing']
+
 setup(name='lando.video',
       version=version,
-      description="Plugin for redturtle.video",
-      long_description=open("README.md").read() + "\n" +
-                       open(os.path.join("docs", "HISTORY.txt")).read(),
+      description="Multipler integration for Plone",
+      long_description=long_description,
       # Get more strings from
       # http://pypi.python.org/pypi?:action=list_classifiers
       classifiers=[
-        "Framework :: Plone",
-        "Programming Language :: Python",
+        'Framework :: Plone',
+        'Intended Audience :: Developers',
+        'License :: OSI Approved :: GNU General Public License (GPL)',
         ],
       keywords='',
-      author='RedTurtle Developers',
+      author='Andrew Mleczko',
       author_email='svilplone@redturtle.it',
-      url='http://www.redturtle.it',
+      url='htttp://www.redturtle.it',
       license='GPL',
       packages=find_packages(exclude=['ez_setup']),
-      namespace_packages=['lando'],
+      namespace_packages=['lando', ],
       include_package_data=True,
       zip_safe=False,
-      install_requires=[
-          'setuptools',
-          'redturtle.video'
-      ],
+      install_requires=['setuptools',
+                        # -*- Extra requirements: -*-
+                        ],
+      tests_require=tests_require,
+      extras_require=dict(tests=tests_require),
+      test_suite='lando.video.tests.test_docs.test_suite',
       entry_points="""
-      # -*- Entry points: -*-
-
+      # -*- entry_points -*-
       [z3c.autoinclude.plugin]
       target = plone
       """,
+      setup_requires=["PasteScript"],
+      paster_plugins=["ZopeSkel"],
       )

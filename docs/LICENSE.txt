@@ -1,4 +1,4 @@
-  lando.video is copyright RedTurtle Developers
+  lando.video is copyright Andrew Mleczko
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
