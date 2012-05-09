@@ -11,6 +11,7 @@
          class=".upload.VideoUpload"
          template="video_upload.pt"
          permission="zope2.View"
+         allowed_attributes="get_token"
      />
 
   <!-- -*- extra stuff goes here -*- -->

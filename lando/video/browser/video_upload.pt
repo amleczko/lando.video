@@ -16,9 +16,9 @@
             <metal:field use-macro="python:here.widget('title', mode='view')">
             Title
             </metal:field> - Multipler Upload
-        </h1>
+          </h1>
 
-        The Form
+        <iframe tal:attributes="src view/get_form_url" />
 
     </tal:main-macro>
    </div>
