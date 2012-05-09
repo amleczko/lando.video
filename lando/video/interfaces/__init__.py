@@ -16,7 +16,7 @@ class IMultiplerSettings(Interface):
                     title=_(u"Connection url to lando.proxy"),
                     required=True,
                     default='http://localhost:6543',
-                    missing_value='http://localhost:6543',
+                    missing_value='',
                     description=_('help_lando_url',
                         default=u"This should be the proper URL to proxy application, something like: "
                                 u"http://landoproxy.redturtle.it/")
@@ -25,8 +25,8 @@ class IMultiplerSettings(Interface):
     lando_pass = schema.Password(
                     title=_(u"lando.proxy token pass"),
                     required=True,
-                    default='s3cr3t',
-                    missing_value='s3cr3t',
+                    default=u's3cr3t',
+                    missing_value=u'',
                     description=_('help_lando_pass',
                         default=u"This should be the proper lando.proxy pass phrase.")
             )
