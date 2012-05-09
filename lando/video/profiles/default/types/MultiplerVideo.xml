@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
-<object name="Video"
+<object name="MultiplerVideo"
    meta_type="Factory-based Type Information with dynamic views"
    i18n:domain="lando.video" xmlns:i18n="http://xml.zope.org/namespaces/i18n">
-  <property name="title" i18n:translate="">Video</property>
+  <property name="title" i18n:translate="">Multipler video</property>
   <property name="description"
-    i18n:translate="">Multipler Video</property>
-  <property name="content_meta_type">Video</property>
+    i18n:translate="">Multipler video</property>
+  <property name="content_meta_type">MultiplerVideo</property>
   <property name="content_icon">document_icon.gif</property>
   <property name="product">lando.video</property>
   <property name="factory">addVideo</property>

@@ -31,7 +31,7 @@ class Video(base.ATCTContent):
     """Multipler Video"""
     implements(IVideo)
 
-    meta_type = "Video"
+    meta_type = "MultiplerVideo"
     schema = VideoSchema
 
     title = atapi.ATFieldProperty('title')
