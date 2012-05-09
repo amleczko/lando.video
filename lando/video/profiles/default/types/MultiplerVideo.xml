@@ -29,4 +29,8 @@
     url_expr="string:${object_url}/edit" visible="True">
     <permission value="Modify portal content" />
   </action>
+  <action title="Upload" action_id="upload" category="object" condition_expr=""
+    url_expr="string:${object_url}/multipler_upload" visible="True">
+    <permission value="Modify portal content" />
+  </action>
 </object>

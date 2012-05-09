@@ -5,6 +5,14 @@
 
   <include package="plone.app.contentmenu" />
 
+    <browser:page
+         name="multipler_upload"
+         for="lando.video.interfaces.IVideo"
+         class=".upload.VideoUpload"
+         template="video_upload.pt"
+         permission="zope2.View"
+     />
+
   <!-- -*- extra stuff goes here -*- -->
 
 </configure>
