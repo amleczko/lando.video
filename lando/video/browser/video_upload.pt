@@ -18,7 +18,48 @@
             </metal:field> - Multipler Upload
           </h1>
 
-        <iframe tal:attributes="src view/get_form_url" />
+          <form id="upload_form" enctype="multipart/form-data" method="POST" 
+                tal:attributes="action view/get_form_url">
+                <input type="file" name="file" id="file"/>
+                <input type="submit" i18n:attributes="value" value="Upload"/>
+          </form>
+
+          <script>
+
+                    jq('form#upload_form').submit(function(event){
+  
+                      if (jq('#file')[0].files.length) {
+
+                          formdata = new FormData();
+                          formdata.append('file', jq('#file')[0].files[0]);
+
+                          jq.ajax({
+                                url: jq(this).attr('action'),
+                                type: "POST",
+                                data: formdata,
+                                processData: false,
+                                contentType: false,
+                                success: function (task_id) {
+                                  current_href = document.location.href;
+                                  update_video_href = current_href.replace('multipler_upload', 'set_task_id');
+
+                                  jq.ajax({
+                                      url: update_video_href,
+                                      type: "POST",
+                                      data: { taskid: task_id },
+                                      success: function (res) {
+                                        view_video_href = current_href.replace('multipler_upload', '');
+                                        document.location.href = view_video_href;
+                                      }
+                                  });
+                                }
+                          });
+                     }
+                     event.preventDefault();
+                     return false;
+                  });
+
+          </script>
 
     </tal:main-macro>
    </div>

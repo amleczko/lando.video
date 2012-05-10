@@ -10,10 +10,25 @@
          for="lando.video.interfaces.IVideo"
          class=".upload.VideoUpload"
          template="video_upload.pt"
-         permission="zope2.View"
          allowed_attributes="get_token"
+         permission="cmf.ModifyPortalContent"
      />
 
-  <!-- -*- extra stuff goes here -*- -->
+    <browser:page
+         name="set_task_id"
+         for="lando.video.interfaces.IVideo"
+         class=".upload.VideoUpload"
+         attribute="set_task_id"
+         permission="cmf.ModifyPortalContent"
+     />
+
+     <browser:viewlet
+         name="lando.proxy"
+         for="lando.video.interfaces.IVideo"
+         manager="plone.app.layout.viewlets.interfaces.IAboveContentBody"
+         class=".viewlet.LandoProxy"
+         permission="cmf.ModifyPortalContent"
+     />
+
 
 </configure>
