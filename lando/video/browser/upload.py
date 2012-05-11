@@ -67,6 +67,8 @@ class VideoUpload(BrowserView):
             if task.get('result'):
                 file_id = task.get('result').get('file_id')
                 store['lando.video.file_id'] = file_id
+            else:
+                return task
 
         if file_id:
             token = self.get_token()
@@ -74,7 +76,7 @@ class VideoUpload(BrowserView):
 
             dt = socket.getdefaulttimeout()
             socket.setdefaulttimeout(TIMEOUT)
-            req = urllib2.urlopen('%s/%s/get_file/%s' % (settings.lando_url, token, file_id))
+            req = urllib2.urlopen('%s/%s/video/%s/view' % (settings.lando_url, token, file_id))
             socket.setdefaulttimeout(dt)
             video = json.loads(req.read())
             return video
@@ -85,6 +87,7 @@ class VideoUpload(BrowserView):
         store = IAnnotations(self.context)
         taskid = task_id or json.loads(self.request.form.get('taskid'))
         store['lando.video.task_id'] = taskid
+        store['lando.video.file_id'] = None #setting the task should clean file
         return 'OK'
 
     def set_file_id(self, file_id=None):

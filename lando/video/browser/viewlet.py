@@ -10,8 +10,7 @@ class LandoProxy(ViewletBase):
 
     def render(self):
         video = self.lando_video.get_video()
-
         if video:
             return str(video)
-
-        return ''
+        else:
+            return ''
