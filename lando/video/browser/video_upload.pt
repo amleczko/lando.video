@@ -18,6 +18,7 @@
             </metal:field> - Multipler Upload
           </h1>
 
+          <img id="loading_image" src="" tal:attributes="src string:${here/portal_url}/++resource++ajax-loader.gif" style="display:none" />
           <form id="upload_form" enctype="multipart/form-data" method="POST" 
                 tal:attributes="action view/get_form_url">
                 <input type="file" name="file" id="file"/>
@@ -29,6 +30,9 @@
                     jq('form#upload_form').submit(function(event){
   
                       if (jq('#file')[0].files.length) {
+
+                        jq('form#upload_form').hide();
+                        jq('#loading_image').show();
 
                           formdata = new FormData();
                           formdata.append('file', jq('#file')[0].files[0]);

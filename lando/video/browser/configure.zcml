@@ -30,5 +30,10 @@
          permission="cmf.ModifyPortalContent"
      />
 
+      <browser:resource
+           name="ajax-loader.gif"
+           file="ajax-loader.gif"
+      />
+
 
 </configure>
