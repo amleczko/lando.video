@@ -62,13 +62,13 @@ class VideoUpload(BrowserView):
             socket.setdefaulttimeout(TIMEOUT)
             req = urllib2.urlopen('%s/%s/get_task/%s' % (settings.lando_url, token, task_id))
             socket.setdefaulttimeout(dt)
-            task = json.loads(req.read())
+            result = json.loads(req.read())
 
-            if task.get('result'):
-                file_id = task.get('result').get('file_id')
+            if result['admit_task'].get('result'):
+                file_id = result['admit_task'].get('result').get('file_id')
                 store['lando.video.file_id'] = file_id
             else:
-                return task
+                return result
 
         if file_id:
             token = self.get_token()
