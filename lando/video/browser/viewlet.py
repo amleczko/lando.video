@@ -14,7 +14,7 @@ class LandoProxy(ViewletBase):
         try:
             video = self.lando_video.get_video()
         except (socket.timeout, urllib2.URLError), exc:
-                return exc
+                return str(exc)
         if video:
             return str(video)
         else:
