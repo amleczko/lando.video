@@ -1,4 +1,5 @@
 import socket
+import urllib2
 from plone.app.layout.viewlets.common import ViewletBase
 from zope.component import getMultiAdapter
 
@@ -12,7 +13,7 @@ class LandoProxy(ViewletBase):
     def render(self):
         try:
             video = self.lando_video.get_video()
-        except socket.timeout, exc:
+        except (socket.timeout, urllib2.URLError), exc:
                 return exc
         if video:
             return str(video)
