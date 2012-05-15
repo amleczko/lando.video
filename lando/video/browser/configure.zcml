@@ -8,16 +8,15 @@
     <browser:page
          name="multipler_upload"
          for="lando.video.interfaces.IVideo"
-         class=".upload.VideoUpload"
+         class=".multipler.MultiplerAPI"
          template="video_upload.pt"
-         allowed_attributes="get_token"
          permission="cmf.ModifyPortalContent"
      />
 
     <browser:page
          name="set_task_id"
          for="lando.video.interfaces.IVideo"
-         class=".upload.VideoUpload"
+         class=".multipler.MultiplerAPI"
          attribute="set_task_id"
          permission="cmf.ModifyPortalContent"
      />

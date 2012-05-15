@@ -18,9 +18,10 @@
             </metal:field> - Multipler Upload
           </h1>
 
+        <tal:form condition="view/form_url">
           <img id="loading_image" src="" tal:attributes="src string:${here/portal_url}/++resource++ajax-loader.gif" style="display:none" />
           <form id="upload_form" enctype="multipart/form-data" method="POST" 
-                tal:attributes="action view/get_form_url">
+                tal:attributes="action view/form_url">
                 <input type="file" name="file" id="file"/>
                 <input type="submit" i18n:attributes="value" value="Upload"/>
           </form>
@@ -64,6 +65,10 @@
                   });
 
           </script>
+      </tal:form>
+      <p tal:condition="not: view/form_url" i18n:translate="">
+        We are sorry but we cannot render the upload form at this time. Please try again later
+      </p>
 
     </tal:main-macro>
    </div>
