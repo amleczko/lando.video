@@ -1,18 +1,7 @@
-<div tal:define="video view/get_video">
-
-  <tal:video condition="video">
-      <tal:video_meta define="video_meta video/annotation/file_list/file_attributes;
-                              video_ready python: video_meta['file_state'] == 'ready'">
-
-         <video width="400" height="300" controls="controls" poster="http://placehold.it/400x300" tal:condition="video_ready">
-            <source src="" tal:attributes="src video_meta/file_link" type="video/mp4" /> 
-            Il tuo browser non supporta HTML5
-         </video>
-
-         <span tal:condition="not: video_ready" i18n:translate="">Video is being converted...</span>
-      </tal:video_meta>
-
-  </tal:video>
-
-  <span tal:condition="not: video" tal:content="view/get_task_status"/>
+<div tal:condition="view/get_video_url">
+    <video width="400" height="300" controls="controls" poster="http://placehold.it/400x300">
+      <source src="" tal:attributes="src view/get_video_url" type="video/mp4" /> 
+      Il tuo browser non supporta HTML5
+    </video>
 </div>
+<div tal:condition="not: view/get_video_url" i18n:translate="">Video is being converted...</div>

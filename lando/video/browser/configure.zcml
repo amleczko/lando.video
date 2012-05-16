@@ -29,6 +29,15 @@
          permission="cmf.ModifyPortalContent"
      />
 
+    <!-- Render the workflow history -->
+    <browser:viewlet
+        name="plone.belowcontentbody.contenthistory"
+        for="lando.video.interfaces.IVideo"
+        manager="plone.app.layout.viewlets.interfaces.IBelowContentBody"
+        class=".viewlet.LandoContentHistoryViewlet"
+        permission="zope2.View" 
+        />
+
       <browser:resource
            name="ajax-loader.gif"
            file="ajax-loader.gif"
