@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<object name="Topic"
+   i18n:domain="plone" xmlns:i18n="http://xml.zope.org/namespaces/i18n">
+ <property name="view_methods" purge="False">
+  <element value="lando.video.collection_thumb_view"/>
+  <element value="lando.video.collection_player_view"/>
+ </property>
+</object>

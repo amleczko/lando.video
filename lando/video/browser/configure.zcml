@@ -11,6 +11,7 @@
          class=".multipler.MultiplerAPI"
          template="video_upload.pt"
          permission="cmf.ModifyPortalContent"
+         allowed_attributes="video_ready"
      />
 
     <browser:page
@@ -20,6 +21,37 @@
          attribute="set_task_id"
          permission="cmf.ModifyPortalContent"
      />
+
+  <!-- collection views -->
+    <browser:page
+         name="lando.video.collection_player_view"
+         for="Products.ATContentTypes.interface.IATTopic"
+         template="collection_player_view.pt"
+         permission="zope2.View" 
+     />
+
+     <browser:menuItem
+         for="Products.ATContentTypes.interface.IATTopic"
+         menu="plone_displayviews"
+         title="Multipler video with player"
+         action="@@lando.video.collection_player_view"
+      />
+
+    <browser:page
+         name="lando.video.collection_thumb_view"
+         for="Products.ATContentTypes.interface.IATTopic"
+         template="collection_thumb_view.pt"
+         permission="zope2.View" 
+     />
+
+     <browser:menuItem
+         for="Products.ATContentTypes.interface.IATTopic"
+         menu="plone_displayviews"
+         title="Multipler video with thumb image"
+         action="@@lando.video.collection_thumb_view"
+      />
+
+   <!-- Viewlets -->
 
      <browser:viewlet
          name="lando.proxy"
