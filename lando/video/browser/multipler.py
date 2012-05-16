@@ -87,7 +87,7 @@ class MultiplerAPI(BrowserView, object):
                    'type': 'multipler'}
         if new_state == READY:
             history['transition_title'] = u'Video is ready'
-            history['comments'] = u'Video url is %s' % self.store.get('lando.video.file_url')
+            history['comments'] = u'Video url is %s' % response['annotation']['file_list']['file_attributes']['file_link']
             ADD_HISTORY = True
         elif new_state == UPLOADING:
             history['transition_title'] = u'Started video upload'
