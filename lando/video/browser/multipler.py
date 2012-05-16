@@ -117,7 +117,7 @@ class MultiplerAPI(BrowserView, object):
     @property
     def file_id(self):
         file_id = self.store.get('lando.video.file_id')
-        if not file_id:
+        if not file_id and self.task_id:
             result = self.multipler_request('get_task/%s' % self.task_id)
             if result and result['admit_task'].get('result'):
                 file_id = result['admit_task'].get('result').get('file_id')
