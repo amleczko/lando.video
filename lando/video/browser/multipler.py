@@ -33,6 +33,7 @@ class MultiplerAPI(BrowserView, object):
     def __init__(self, *args, **kwargs):
         super(MultiplerAPI, self).__init__(*args, **kwargs)
         self.store = IAnnotations(self.context)
+        self.store['lando.video.file_thumb'] = 'http://placehold.it/400x300'
         self.token = self.get_token()
 
     @property
@@ -69,6 +70,7 @@ class MultiplerAPI(BrowserView, object):
             if video_state == 'ready':
                 new_state = READY
                 self.store['lando.video.file_link'] = response['annotation']['file_list']['file_attributes']['file_link']
+                self.context.reindexObject(idxs=['lando.video.file_url','lando.video.file_thumb'])
             else:
                 new_state = CONVERTING
         elif response.get('response') == 'NOK':

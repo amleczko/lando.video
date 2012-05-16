@@ -19,7 +19,15 @@
       description="Multipler integration for Plone"
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
-  
+
+  <adapter 
+      name="lando.video.file_url"
+      factory=".indexer.file_url" />
+
+  <adapter 
+      name="lando.video.file_thumb"
+      factory=".indexer.file_thumb" />
+
   <!-- -*- extra stuff goes here -*- -->
 
 </configure>
