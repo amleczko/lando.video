@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from plone.memoize.instance import memoize
 from zope.annotation.interfaces import IAnnotations
 from plone.app.layout.viewlets.common import ViewletBase
@@ -6,6 +8,7 @@ from zope.component import getMultiAdapter
 
 
 class LandoProxy(ViewletBase):
+    """Viewlet that renders multipler video player."""
 
     def __init__(self, *args, **kwargs):
         super(LandoProxy, self).__init__(*args, **kwargs)
@@ -17,6 +20,7 @@ class LandoProxy(ViewletBase):
 
 
 class LandoContentHistoryViewlet(ContentHistoryViewlet):
+    """Customization for plone ContentHistoryViewlet to include multiper history"""
 
     def multiplerHistory(self):
         store = IAnnotations(self.context)

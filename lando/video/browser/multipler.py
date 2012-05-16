@@ -28,18 +28,27 @@ READY = 4
 
 
 class MultiplerAPI(BrowserView, object):
+    """Main class to communicate with lando.proxy."""
 
     def __init__(self, *args, **kwargs):
         super(MultiplerAPI, self).__init__(*args, **kwargs)
         self.store = IAnnotations(self.context)
         self.token = self.get_token()
 
+    @property
+    def multipler_settings(self):
+        """Return multipler related settings from plone.app.registry"""
+        registry = queryUtility(IRegistry)
+        return registry.forInterface(IMultiplerSettings, check=False)
+
     def get_multipler_state(self):
+        """Return multipler state (for video or celery task) from annotation."""
         if 'lando.video.state' not in self.store.keys():
             self.store['lando.video.state'] = NONE
         return self.store['lando.video.state']
 
     def set_multipler_state(self, response):
+        """Set multipler state from lando.proxy response."""
         current_state = self.multipler_state
 
         if not isinstance(response, dict):
@@ -76,6 +85,7 @@ class MultiplerAPI(BrowserView, object):
     multipler_state = property(get_multipler_state, set_multipler_state)
 
     def add_multipler_state_history(self, response, new_state):
+        """Add multipler state to plone history viewlet"""
         pm = self.context.portal_membership
         actor = pm.getAuthenticatedMember()
         ADD_HISTORY = False
@@ -105,6 +115,7 @@ class MultiplerAPI(BrowserView, object):
             self.store['lando.video.states'].append(history)
 
     def video_ready(self):
+        """Return True is video is ready to display from multipler."""
         if self.file_id:
             if not self.store.get('lando.video.file_link'):
                 self.multipler_request('video/%s/view' % self.file_id)
@@ -112,10 +123,12 @@ class MultiplerAPI(BrowserView, object):
 
     @property
     def task_id(self):
+        """Return celery task_id."""
         return self.store.get('lando.video.task_id')
 
     @property
     def file_id(self):
+        """Return multipler video file_id."""
         file_id = self.store.get('lando.video.file_id')
         if not file_id and self.task_id:
             result = self.multipler_request('get_task/%s' % self.task_id)
@@ -123,6 +136,14 @@ class MultiplerAPI(BrowserView, object):
                 file_id = result['admit_task'].get('result').get('file_id')
                 self.store['lando.video.file_id'] = file_id
         return file_id
+
+    def set_task_id(self, task_id=None):
+        """ set celery task_id for later usage"""
+        taskid = task_id or json.loads(self.request.form.get('taskid'))
+        self.store['lando.video.task_id'] = taskid
+        self.store['lando.video.file_id'] = None #setting the task should clean file
+        self.store['lando.video.file_link'] = None #setting the task should clean file_link
+        return 'OK'
 
     def get_token(self):
         """Return two valued token from lando.proxy"""
@@ -164,12 +185,6 @@ class MultiplerAPI(BrowserView, object):
         setattr(self, 'multipler_state', result)
         return result
 
-    @property
-    def multipler_settings(self):
-        """Return multipler related settings from plone.app.registry"""
-        registry = queryUtility(IRegistry)
-        return registry.forInterface(IMultiplerSettings, check=False)
-
     def form_url(self):
         """Return form url for ajax calls"""
         if not self.token:
@@ -188,19 +203,12 @@ class MultiplerAPI(BrowserView, object):
         query = urllib.urlencode(params)
         return "%s/%s/upload?%s" % (settings.lando_url, self.token, query)
 
-    def set_task_id(self, task_id=None):
-        """ set celery task_id for later usage"""
-        taskid = task_id or json.loads(self.request.form.get('taskid'))
-        self.store['lando.video.task_id'] = taskid
-        self.store['lando.video.file_id'] = None #setting the task should clean file
-        self.store['lando.video.file_link'] = None #setting the task should clean file_link
-        return 'OK'
-
     def get_video_url(self):
-        "return the video json response"""
+        """Return the video file_link."""
         if self.video_ready():
             return self.store['lando.video.file_link']
 
     def render_video(self):
+        """Render video viewlet."""
         template = ViewPageTemplateFile("video_view.pt")
         return template

@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 """Definition of the Video content type
 """
 
