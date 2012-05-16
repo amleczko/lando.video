@@ -203,6 +203,23 @@ class MultiplerAPI(BrowserView, object):
         query = urllib.urlencode(params)
         return "%s/%s/upload?%s" % (settings.lando_url, self.token, query)
 
+    def update_video(self):
+        """Update title and description"""
+        params = {}
+
+        title = self.context.title_or_id()
+        if title:
+            params['file_title'] = title
+        description = self.context.Description()
+        if description:
+            params['file_description'] = description
+        query = urllib.urlencode(params)
+        self.multipler_request('video/%s/edit?%s' % (self.file_id, query))
+
+    def delete_video(self):
+        """Delete video in multipler"""
+        self.multipler_request('video/%s/delete' % self.file_id)
+
     def get_video_url(self):
         """Return the video file_link."""
         if self.video_ready():

@@ -13,4 +13,14 @@
         />
   </class>
 
+    <subscriber
+         for="..interfaces.IVideo
+              zope.app.event.interfaces.IObjectModifiedEvent"
+         handler=".video.videoModified" />
+
+    <subscriber
+         for="..interfaces.IVideo
+              OFS.interfaces.IObjectWillBeRemovedEvent"
+         handler=".video.videoRemoved" />
+
 </configure>
