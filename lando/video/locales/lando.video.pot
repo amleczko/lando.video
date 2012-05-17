@@ -1,0 +1,75 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2012-05-17 14:00+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: lando.video\n"
+
+#: ./interfaces/__init__.py:16
+msgid "Connection url to lando.proxy"
+msgstr ""
+
+#: ./profiles/default/types/MultiplerVideo.xml
+msgid "Multipler video"
+msgstr ""
+
+#: ./browser/video_view.pt:13
+msgid "No video uploaded."
+msgstr ""
+
+#: ./browser/multipler.py:106
+msgid "Started video upload"
+msgstr ""
+
+#: ./browser/video_upload.pt:26
+msgid "Upload"
+msgstr ""
+
+#: ./browser/multipler.py:109
+msgid "Video has been uploaded"
+msgstr ""
+
+#: ./browser/multipler.py:112
+#: ./browser/video_view.pt:10
+msgid "Video is being converted"
+msgstr ""
+
+#: ./browser/multipler.py:102
+msgid "Video is ready"
+msgstr ""
+
+#: ./browser/video_upload.pt:69
+msgid "We are sorry but we cannot render the upload form at this time. Please try again later"
+msgstr ""
+
+#: ./browser/collection_player_view.pt:120
+#: ./browser/video_view.pt:5
+msgid "Your browser doesn't support HTML5"
+msgstr ""
+
+#. Default: "This should be the proper lando.proxy pass phrase."
+#: ./interfaces/__init__.py:30
+msgid "help_lando_pass"
+msgstr ""
+
+#. Default: "This should be the proper URL to proxy application, something like: http://landoproxy.redturtle.it/"
+#: ./interfaces/__init__.py:20
+msgid "help_lando_url"
+msgstr ""
+
+#: ./interfaces/__init__.py:26
+msgid "lando.proxy token pass"
+msgstr ""
+

@@ -115,9 +115,9 @@
                               </span> 
                           </dd>
                           <video width="400" height="300" controls="controls" poster="http://placehold.it/400x300" 
-                                 tal:condition="python: getattr(item,'lando.video.file_url', None)">
+                                 tal:condition="python: getattr(item,'lando.video.file_url', None)" i18n:domain="lando.video">
                               <source src="" tal:attributes="src python: getattr(item,'lando.video.file_url', None)" type="video/mp4" /> 
-                              Il tuo browser non supporta HTML5
+                              <span tal:omit-tag="" i18n:translate="">Your browser doesn't support HTML5</span>
                           </video>
                       </tal:block>
                       </tal:entry>

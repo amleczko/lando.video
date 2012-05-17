@@ -33,7 +33,7 @@
      <browser:menuItem
          for="Products.ATContentTypes.interface.IATTopic"
          menu="plone_displayviews"
-         title="Multipler video with player"
+         title="Multipler video player"
          action="@@lando.video.collection_player_view"
       />
 
@@ -47,7 +47,7 @@
      <browser:menuItem
          for="Products.ATContentTypes.interface.IATTopic"
          menu="plone_displayviews"
-         title="Multipler video with thumb image"
+         title="Multipler video thumb"
          action="@@lando.video.collection_thumb_view"
       />
 

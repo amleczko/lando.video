@@ -12,6 +12,7 @@ from zope.annotation.interfaces import IAnnotations
 from plone.registry.interfaces import IRegistry
 
 from lando.video.interfaces import IMultiplerSettings
+from lando.video import videoMessageFactory as _
 
 
 PLONE_PROXY_SESSION = 'lando.proxy.session'
@@ -98,17 +99,17 @@ class MultiplerAPI(BrowserView, object):
                    'transition_title': '',
                    'type': 'multipler'}
         if new_state == READY:
-            history['transition_title'] = u'Video is ready'
+            history['transition_title'] = _(u'Video is ready')
             history['comments'] = u'Video url is %s' % response['annotation']['file_list']['file_attributes']['file_link']
             ADD_HISTORY = True
         elif new_state == UPLOADING:
-            history['transition_title'] = u'Started video upload'
+            history['transition_title'] = _(u'Started video upload')
             ADD_HISTORY = True
         elif new_state == UPLOADED:
-            history['transition_title'] = u'Video has been uploaded'
+            history['transition_title'] = _(u'Video has been uploaded')
             ADD_HISTORY = True
         elif new_state == CONVERTING:
-            history['transition_title'] = u'Video is being converted'
+            history['transition_title'] = _(u'Video is being converted')
             ADD_HISTORY = True
 
         if 'lando.video.states' not in self.store.keys():

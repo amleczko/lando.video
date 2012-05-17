@@ -4,7 +4,7 @@
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       lang="en"
       metal:use-macro="here/main_template/macros/master"
-      i18n:domain="redturtle.video">
+      i18n:domain="lando.video">
 
   <body>
    <div metal:fill-slot="main">
